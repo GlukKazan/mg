@@ -1,14 +1,14 @@
 create table    mg_table (
   table_name    varchar(100)   not null,
   pk_name       varchar(100)   not null,
-  primary key(name)
+  primary key(table_name)
 );
 
 create sequence mg_action_seq;
 
 create table    mg_action (
   id            bigint         default nextval('mg_action_seq') not null,
-  table_name    varchar(100)   not null references mg_table(name),
+  table_name    varchar(100)   not null references mg_table(table_name),
   old_id        varchar(50)    not null,
   new_id        varchar(50)    not null,
   action_time   timestamp      default now() not null,
